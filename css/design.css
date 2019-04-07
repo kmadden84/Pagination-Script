@@ -11,7 +11,22 @@ body{
   border-radius: 5px;
   padding: 50px;
 }
+/*li.cf {
+  display:none;
+}
 
+li.student-item.cf {
+  display:block;
+}*/
+li.cf {
+  display: none;
+}
+li.student-item {
+  display:block;
+}
+.js-hidden {
+  display: none !important;
+}
 .page-header{
   margin-bottom: 20px;
 }
