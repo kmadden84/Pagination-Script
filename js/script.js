@@ -74,7 +74,7 @@ $('input[type="text"]').on('keyup', function() {
             allStudentItems[i].classList.add(hidden); // and add class hidden to non-matching items
         }
     }
-    displayItems();
+    displayItems(); //call display items function, to re-calculate page numbers while searching
 })
 
 
