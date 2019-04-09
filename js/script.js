@@ -8,18 +8,31 @@ FSJS project 2 - List Filter and Pagination
 
 // Global Variables
 
-const searchInput = document.getElementById('searchInput');
+
 let allStudentItems = document.querySelectorAll('.student-item');
 let ul = document.querySelector('.student-list');
 const toggleContainer = document.getElementById('cycle');
 const count = 10;
 const studentClass = 'student-item';
 const hidden = 'js-hidden';
-let noItems;
+const pageHeader = document.querySelector('.page-header');
+
+const input = document.createElement('input');
+input.setAttribute('id','searchInput');
+input.setAttribute('class','search');
+input.setAttribute('type', 'text');
+input.setAttribute('placeholder', 'Search for names..')
+input.setAttribute('value', '')
+
+pageHeader.appendChild(input);
+
+const button = document.createElement('button');
+button.setAttribute('class','search')
+button.textContent = 'SEARCH';
+
+pageHeader.appendChild(button);
 
 // Looping through items, pushing to array, appending buttons
-
-console.log(ul);
 
 function displayItems(page) {
     const pageIndex = typeof(page) === 'number' ? page : 0; // pageIndex starts at 0 if not specified, otherwise pull from text value of button
@@ -60,9 +73,9 @@ displayItems(); //call looped items function on first page load
 
 //Search functionality
 
-$('input[type="text"]').on('keyup', function() {
-    // Declare variables;
-    filter = searchInput.value.toUpperCase(); // define search content as the value of the input
+function search() {
+        // Declare variables;
+    const filter = searchInput.value.toUpperCase(); // define search content as the value of the input
     for (i = 0; i < allStudentItems.length; i++) { // Loop through student-items               
         let name = allStudentItems[i].getElementsByTagName("h3")[0]; // define container containing what we're looking for
         txtValue = name.textContent; // define what we're looking for as the text content
@@ -75,7 +88,19 @@ $('input[type="text"]').on('keyup', function() {
         }
     }
     displayItems(); //call display items function, to re-calculate page numbers while searching
+}
+button.addEventListener('click', function() {
+search();
 })
+input.addEventListener('keyup', function() {
+search();
+});
+
+
+
+
+
+
 
 
 // Creating and Appending page links
